@@ -8,19 +8,6 @@ class HelloWorld:
 		return "Hello World!"
 	index.exposed = True
 
-class MyServer:
-	exposed = True
-	def __call__(self, *args, **params):
-		raise cherrypy.HTTPError(403, "Request Forbidden -- You are not allowed.")
-
-	def GET(self, *args, **params):
-		if len(args[0]) > 0:
-			raise cherrypy.HTTPError(403, "Request Forbidden -- You are not allowed.")
-		page = "MyServer GET ... </BR>\n"
-		page += str(args) +"</BR>\n"
-		page += str(params) + "</BR>\n"
-		return page
-
 if __name__ == '__main__':
 	
 	hwserver = HelloWorld()
